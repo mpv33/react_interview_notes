@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchData } from '../services/userApi/user';
-import { AppDispatch, RootState } from '../store/store';
-
+import { fetchData, fetchData1 } from '../services/userApi/user';
+import { getUserData } from '../store/features/user/userSelectors';
+import { AppDispatch } from '../store/store';
 
 
 function UserData() {
     const [user, setUser] = useState<any[]>([])
     const dispatch = useDispatch<AppDispatch>()
-    const data1 = useSelector((state: RootState) => state.data.data);
+    //  const data1 = useSelector(getUserData);
+    const data2 = useSelector(getUserData);
 
     useEffect(() => {
-        dispatch(fetchData())
+        // dispatch(fetchData())
+        dispatch(fetchData1())
     }, [])
 
     useEffect(() => {
-
-        console.log('start:::::', data1)
-
-        setUser(data1?.slice(-30))
-    }, [data1])
+        // console.log('start:::::', data2)
+        setUser(data2?.slice(-10))
+    }, [data2])
 
     return (
         <div className='flex justify-center items-center' >

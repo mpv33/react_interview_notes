@@ -1,7 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchData } from '../../../services/userApi/user';
-import { FETCH_DATA_FAILURE,FETCH_DATA_SUCCESS, FETCH_DATA_REQUEST } from './userActionTypes';
-
+import { createSlice,PayloadAction } from '@reduxjs/toolkit';
+import { fetchData} from '../../../services/userApi/user';
 interface State {
   data: any[];
   loading: boolean;
@@ -14,19 +12,6 @@ const initialState: State = {
   error: null,
 };
 
-export const fetchDataRequest  = () => ({
-  type: FETCH_DATA_REQUEST,
-});
-
-export const fetchDataSuccess = (data: any[]) => ({
-  type: FETCH_DATA_SUCCESS,
-  payload: data,
-});
-
-export const fetchDataError = (error: string) => ({
-  type: FETCH_DATA_FAILURE,
-  payload: error,
-});
 
 
 
@@ -34,23 +19,39 @@ export const fetchDataError = (error: string) => ({
 const dataSlice = createSlice({
   name: 'data',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(fetchData.pending, (state) => {
-      state.loading = true;
-    });
-    builder.addCase(fetchData.fulfilled, (state, action) => {
-      state.loading = false;
-      state.error = null;
+  //method-1 : without using createAsyncThunk reducer
+  reducers: {
+    fetchDataRequest: (state) => {
+      state.loading=true
+    },
+    fetchDataError: (state,action) => {
+      state.error=action.payload
+      state.loading=false
+    },
+    fetchDataSuccess: (state, action: PayloadAction<any[]>) => {
       state.data = action.payload;
-    });
-    builder.addCase(fetchData.rejected, (state, action) => {
-      state.loading = false;
-      state.error = action.error.message ?? 'An error occurred';
-    });
+      state.loading=false
+      state.error=null
+    },
   },
-});
 
+  //method-2: using createAsyncThunk reducer
+  // reducers:{}
+  // extraReducers: (builder) => {
+  //   builder.addCase(fetchData.pending, (state) => {
+  //     state.loading = true;
+  //   });
+  //   builder.addCase(fetchData.fulfilled, (state, action) => {
+  //     state.loading = false;
+  //     state.error = null;
+  //     state.data = action.payload;
+  //   });
+  //   builder.addCase(fetchData.rejected, (state, action) => {
+  //     state.loading = false;
+  //     state.error = action.error.message ?? 'An error occurred';
+  //   });
+  // },
+});
 
 
 
