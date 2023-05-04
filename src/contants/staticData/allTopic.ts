@@ -176,7 +176,7 @@ export const jsTopic = [
     ]
   },
   {
-    topic: "Promises and Async/Await",
+    topic: "Promises and Async Await",
     questions: [
       "Explain the concept of promises in JavaScript.",
       "How do you chain multiple promises together?",

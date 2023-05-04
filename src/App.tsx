@@ -4,6 +4,7 @@ import Body from './components/Body';
 import DsaTopic from './pages/dsa/DsaTopic';
 import JsTopic from './pages/javascript/JsTopic';
 import ReactTopic from './pages/react/ReactTopic';
+import Home from './pages/home/Home';
 
 const appRouter = createBrowserRouter([
   {
@@ -12,19 +13,38 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <DsaTopic />,
+        element: <Home />,
       },
       {
         path: "/dsa",
         element: <DsaTopic />,
+        children: [
+          {
+            path: "/dsa/:topic",
+            element: <DsaTopic />,
+          },
+        ]
       },
       {
         path: "/javascript",
         element: <JsTopic />,
+        children: [
+          {
+            path: "/javascript/:topic",
+            element: <JsTopic />,
+          },
+        ]
       },
       {
         path: "/reactjs",
         element: <ReactTopic />,
+        children: [
+          {
+            path: "/reactjs/:topic",
+            element: <ReactTopic />,
+          },
+        ]
+        
       },
       // {
       //   path: "/nodejs",
@@ -40,7 +60,7 @@ const appRouter = createBrowserRouter([
 
 function App() {
   return (
-    <div className='bg-gray-100'>
+    <div className='bg-gray-50'>
       <RouterProvider router={appRouter} />
     </div>
   );

@@ -2,8 +2,6 @@ import React, { useState,useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { nav } from '../contants/staticData/allTopic'
 
-
-
 function Header() {
     const [navLust, setNavList] = useState(nav)
     const [active, setActive] = useState('')
@@ -13,13 +11,22 @@ function Header() {
           if(path==='/'){
               setActive('')
           }
+          else if(path==='/dsa'){
+              setActive('DSA')
+          }
+          else if(path==='/javascript'){
+            setActive('JavaScript')
+        }
+        else if(path==='/reactjs'){
+            setActive('ReactJs')
+        }
     },[path])
 
     return (
         <div className=''>
             <nav className="flex flex-wrap md:flex-nowrap justify-between p-4 bg-gray-200 fixed top-0 left-0 right-0 z-10">
                 <Link to={'/'}>
-                    <h1 className="text-2xl font-bold">SDE Kit</h1>
+                    <h1 className="text-2xl font-bold">SDE Interview</h1>
                 </Link>
                 <button
                     className="flex md:hidden items-center"
@@ -57,11 +64,11 @@ function Header() {
                             >
                                 {
                                     active === topic.name ?
-                                        <p className='text-blue-500'>
+                                        <p className='text-blue-600'>
                                             {topic.name}
                                         </p>
                                         :
-                                        <p>
+                                        <p className='text-gray-500 hover:text-blue-600'>
 
                                             {topic.name} </p>
                                 }
