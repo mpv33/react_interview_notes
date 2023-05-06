@@ -1,35 +1,40 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { nav } from '../contants/staticData/allTopic'
 
 function Header() {
     const [navLust, setNavList] = useState(nav)
     const [active, setActive] = useState('')
-    const path=useLocation().pathname
+    const path = useLocation().pathname
 
-    useEffect(()=>{
-          if(path==='/'){
-              setActive('')
-          }
-          else if(path==='/dsa'){
-              setActive('DSA')
-          }
-          else if(path==='/javascript'){
+    useEffect(() => {
+        let currentPath = path.split('/')[1]
+        if (path === '/') {
+            setActive('')
+        }
+        else if (currentPath === 'dsa') {
+            setActive('DSA')
+        }
+        else if (currentPath === 'javascript') {
             setActive('JavaScript')
         }
-        else if(path==='/reactjs'){
+        else if (currentPath === 'reactjs') {
             setActive('ReactJs')
         }
-    },[path])
+    }, [path])
 
     return (
         <div className=''>
-            <nav className="flex flex-wrap md:flex-nowrap justify-between p-4 bg-gray-200 fixed top-0 left-0 right-0 z-10">
+            <nav className="flex flex-wrap md:flex-nowrap justify-between items-center p-4 bg-gray-50 fixed top-0 left-0 right-0 z-10">
                 <Link to={'/'}>
-                    <h1 className="text-2xl font-bold">SDE Interview</h1>
+                    {/* <h1 className="text-2xl font-bold"></h1> */}
+                    <p className={`custom-btn btn-2 ${path==='/'? 'btn-active':''} text-2xl font-bold`}>
+                        SDE Interview Kit
+                    </p>
                 </Link>
+
                 <button
-                    className="flex md:hidden items-center"
+                    className="flex md:hidden items-center custom-btn btn-2"
                     onClick={() => document.getElementById('nav-list')?.classList.toggle('hidden')}
                 >
                     <svg
@@ -56,7 +61,7 @@ function Header() {
                             <Link
                                 to={`/${topic.name.toLowerCase()}`}
                                 className="block mt-4 md:mt-0 md:ml-4 hover:text-blue-500 text-center"
-                                onClick={() =>{
+                                onClick={() => {
                                     document.getElementById('nav-list')?.classList.toggle('hidden')
                                     setActive(topic.name)
                                 }
@@ -65,12 +70,19 @@ function Header() {
                                 {
                                     active === topic.name ?
                                         <p className='text-blue-600'>
-                                            {topic.name}
+
+                                            <span className="custom-btn btn-2 btn-active hidden md:block">
+                                                {topic.name}
+                                            </span>
+                                            <span className='block md:hidden'> {topic.name} </span>
                                         </p>
                                         :
                                         <p className='text-gray-500 hover:text-blue-600'>
-
-                                            {topic.name} </p>
+                                            <span className="custom-btn btn-2 hidden md:block">
+                                                {topic.name}
+                                            </span>
+                                            <span className='block md:hidden'> {topic.name} </span>
+                                        </p>
                                 }
                             </Link>
                         </li>
