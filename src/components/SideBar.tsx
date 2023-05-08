@@ -39,7 +39,7 @@ function Sidebar(props: SidebarProps) {
                     handleTopic(item, i)
                   }
                   }
-                  className={`py-2 px-4 w-full m-4 custom-btn btn-2 hidden md:block  hover:btn-active cursor-pointer ${i === activeTopicIndex ? 'btn-active' : ''}`}
+                  className={`py-2 px-4 w-full m-4 card hidden md:block neumorphism cursor-pointer ${i === activeTopicIndex ? 'active' : 'neumorphism'}`}
                 >
                     {item?.topic}
                 </div>

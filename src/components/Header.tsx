@@ -28,7 +28,7 @@ function Header() {
             <nav className="flex flex-wrap md:flex-nowrap justify-between items-center p-4 bg-gray-50 fixed top-0 left-0 right-0 z-10">
                 <Link to={'/'}>
                     {/* <h1 className="text-2xl font-bold"></h1> */}
-                    <p className={`custom-btn btn-2 ${path==='/'? 'btn-active':''} text-2xl font-bold`}>
+                    <p className={`card ${path==='/'? 'active':'neumorphism'} text-2xl font-bold`}>
                         SDE Interview Kit
                     </p>
                 </Link>
@@ -71,17 +71,17 @@ function Header() {
                                     active === topic.name ?
                                         <p className='text-blue-600'>
 
-                                            <span className="custom-btn btn-2 btn-active hidden md:block">
+                                            <p className="card active hidden md:block">
                                                 {topic.name}
-                                            </span>
-                                            <span className='block md:hidden'> {topic.name} </span>
+                                            </p>
+                                            <p className='block md:hidden'> {topic.name} </p>
                                         </p>
                                         :
                                         <p className='text-gray-500 hover:text-blue-600'>
-                                            <span className="custom-btn btn-2 hidden md:block">
+                                            <p className="card neumorphism hidden md:block">
                                                 {topic.name}
-                                            </span>
-                                            <span className='block md:hidden'> {topic.name} </span>
+                                            </p>
+                                            <p className='block md:hidden'> {topic.name} </p>
                                         </p>
                                 }
                             </Link>

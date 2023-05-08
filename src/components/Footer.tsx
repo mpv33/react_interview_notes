@@ -4,7 +4,7 @@ import { FaLinkedin, FaInstagram } from "react-icons/fa";
 function Footer() {
   return (
     <div className="bg-gray-50 p-4 flex justify-center items-center text-gray-500">
-      <div className="custom-btn btn-2 btn-active">
+      <div className="card active">
         <div className="flex items-center">
           <p>
             Powered by{" "}
