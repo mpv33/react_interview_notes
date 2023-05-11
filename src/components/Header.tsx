@@ -25,10 +25,10 @@ function Header() {
 
     return (
         <div className=''>
-            <nav className="flex flex-wrap md:flex-nowrap justify-between items-center p-4 bg-gray-50 fixed top-0 left-0 right-0 z-10">
+            <nav className="flex flex-wrap md:flex-nowrap justify-between items-center p-4  fixed top-0 left-0 right-0 z-10">
                 <Link to={'/'}>
                     {/* <h1 className="text-2xl font-bold"></h1> */}
-                    <p className={`card ${path==='/'? 'active':'neumorphism'} text-2xl font-bold`}>
+                    <p className={`card ${path === '/' ? 'active' : 'neumorphism'} text-2xl font-bold text-gray-600`}>
                         SDE Interview Kit
                     </p>
                 </Link>
@@ -54,39 +54,77 @@ function Header() {
                 </button>
                 <ul
                     id="nav-list"
-                    className="flex-col md:flex-row md:flex justify-center md:justify-between items-center md:items-start w-full md:w-auto hidden"
+                    className="flex-col pb-2 md:flex-row md:flex justify-center md:justify-between items-center md:items-start w-full md:w-auto hidden"
                 >
-                    {navLust.map((topic: any, index: any) => (
-                        <li key={index}>
-                            <Link
-                                to={`/${topic.name.toLowerCase()}`}
-                                className="block mt-4 md:mt-0 md:ml-4 hover:text-blue-500 text-center"
-                                onClick={() => {
-                                    document.getElementById('nav-list')?.classList.toggle('hidden')
-                                    setActive(topic.name)
-                                }
-                                }
-                            >
-                                {
-                                    active === topic.name ?
-                                        <p className='text-blue-600'>
 
-                                            <p className="card active hidden md:block">
-                                                {topic.name}
+                    <div className='bg-gray-50 md:hidden'>
+                        {navLust.map((topic: any, index: any) => (
+                            <li key={index}>
+                                <Link
+                                    to={`/${topic.name.toLowerCase()}`}
+                                    className="block mt-4 md:mt-0 md:ml-4 hover:text-blue-500 text-center"
+                                    onClick={() => {
+                                        document.getElementById('nav-list')?.classList.toggle('hidden')
+                                        setActive(topic.name)
+                                    }
+                                    }
+                                >
+                                    {
+                                        active === topic.name ?
+                                            <p className='text-blue-600'>
+
+                                                <p className="card active hidden md:block">
+                                                    {topic.name}
+                                                </p>
+                                                <p className='block md:hidden'> {topic.name} </p>
                                             </p>
-                                            <p className='block md:hidden'> {topic.name} </p>
-                                        </p>
-                                        :
-                                        <p className='text-gray-500 hover:text-blue-600'>
-                                            <p className="card neumorphism hidden md:block">
-                                                {topic.name}
+                                            :
+                                            <p className='text-gray-500 hover:text-blue-600'>
+                                                <p className="card neumorphism hidden md:block">
+                                                    {topic.name}
+                                                </p>
+                                                <p className='block md:hidden'> {topic.name} </p>
                                             </p>
-                                            <p className='block md:hidden'> {topic.name} </p>
-                                        </p>
-                                }
-                            </Link>
-                        </li>
-                    ))}
+                                    }
+                                </Link>
+                            </li>
+                        ))}
+                    </div>
+
+                    <div className='hidden md:flex'>
+                        {navLust.map((topic: any, index: any) => (
+                            <li key={index}>
+                                <Link
+                                    to={`/${topic.name.toLowerCase()}`}
+                                    className="block mt-4 md:mt-0 md:ml-4 hover:text-blue-500 text-center"
+                                    onClick={() => {
+                                        document.getElementById('nav-list')?.classList.toggle('hidden')
+                                        setActive(topic.name)
+                                    }
+                                    }
+                                >
+                                    {
+                                        active === topic.name ?
+                                            <p className='text-blue-600'>
+
+                                                <p className="card active hidden md:block">
+                                                    {topic.name}
+                                                </p>
+                                                <p className='block md:hidden'> {topic.name} </p>
+                                            </p>
+                                            :
+                                            <p className='text-gray-500 hover:text-blue-600'>
+                                                <p className="card neumorphism hidden md:block">
+                                                    {topic.name}
+                                                </p>
+                                                <p className='block md:hidden'> {topic.name} </p>
+                                            </p>
+                                    }
+                                </Link>
+                            </li>
+                        ))}
+                    </div>
+
                 </ul>
             </nav>
         </div>

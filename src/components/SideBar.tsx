@@ -29,7 +29,7 @@ function Sidebar(props: SidebarProps) {
 
   return (
     <div className='block md:flex' style={{ marginTop: '60px' }}>
-      <div className='w-[17%] hidden md:block bg-gray-50 pt-2'>
+      <div className='w-[20%] hidden md:block pt-2'>
         {
           topics.map((item: Topic, i: number) => (
             <div key={i} className='w-full'>
@@ -48,10 +48,14 @@ function Sidebar(props: SidebarProps) {
           ))
         }
       </div>
-      <div className='w-[90%] flex md:hidden gap-4 mx-4 px-4 pt-8 pb-2 text-blue-500 underline uppercase' >
+      <div className='w-[90%] flex md:hidden gap-4 mx-4 px-4 pt-8 pb-2 text-blue-500  uppercase' >
         <Link to={`/`}>
           <AiOutlineHome size={18} />
         </Link>
+        {
+          `/${category}` == path &&
+            <p className='text-gray-600'> {category} </p>
+        }
         {
           `/${category}` !== path &&
           <Link to={`/${category}`}>
@@ -61,7 +65,7 @@ function Sidebar(props: SidebarProps) {
       </div>
       {
         `/${category}` === path &&
-        <div className='w-[90%] block md:hidden bg-gray-50 mx-4 min-h-[75vh] mt-3'>
+        <div className='w-[90%] block md:hidden mx-4 min-h-[70vh] mt-3'>
           {
             topics.map((item: Topic, i: number) => (
               <div key={i} className='w-full'>
@@ -71,7 +75,7 @@ function Sidebar(props: SidebarProps) {
                       handleTopic(item, i)
                     }
                     }
-                    className='py-2 px-4 w-full text-gray-500 rounded-sm cursor-pointer text-center underline'
+                    className='py-2 px-4 w-full text-blue-500 rounded-sm cursor-pointer text-start'
                   >
                     {item?.topic}
 
@@ -87,7 +91,7 @@ function Sidebar(props: SidebarProps) {
       </div>
       {
         `/${category}` !== path &&
-        <div className='w-[90%] block md:hidden min-h-[75vh]'>
+        <div className='w-[90%] block md:hidden min-h-[72vh]'>
           {renderTopicContent(topics[activeTopicIndex])}
         </div>
       }

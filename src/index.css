@@ -39,7 +39,7 @@
   padding: 10px 25px;
 }
 
-span {
+.bubble {
   height: 10px;
   width: 10px;
   border-radius: 50px;
@@ -69,70 +69,82 @@ span {
 
 
 
+.pyramid-loader {
+  position: relative;
+  /* width: 300px;
+  height: 300px; */
+  display: block;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg);
+}
 
-/* Neomorphic Home */
-.custom-btn {
-    /* width: 130px;
-    height: 40px; */
-    color: rgb(112, 104, 104);
-    border-radius: 5px;
-    padding: 10px 25px;
-    /* font-family: 'Lato', sans-serif;
-    font-weight: 500; */
-    background: transparent;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-    box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5),
-     7px 7px 20px 0px rgba(0,0,0,.1),
-     4px 4px 5px 0px rgba(0,0,0,.1);
-    outline: none;
-    font-size: 15px;
+.wrapper {
+  position: relative;
+  /* width: 100%;
+  height: 100%; */
+  transform-style: preserve-3d;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotateY(360deg);
   }
+}
+
+.pyramid-loader .wrapper .side {
+  width: 70px;
+  height: 70px;
+/* you can choose any gradient or color you want */
+  /* background: radial-gradient( #2F2585 10%, #F028FD 70%, #2BDEAC 120%); */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform-origin: center top;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.pyramid-loader .wrapper .side1 {
+  transform: rotateZ(-30deg) rotateY(90deg);
+  background: conic-gradient( #2BDEAC, #F028FD, #D8CCE6, #2F2585);
+}
+
+.pyramid-loader .wrapper .side2 {
+  transform: rotateZ(30deg) rotateY(90deg);
+  background: conic-gradient( #2F2585, #D8CCE6, #F028FD, #2BDEAC);
+}
+
+.pyramid-loader .wrapper .side3 {
+  transform: rotateX(30deg);
+  background: conic-gradient( #2F2585, #D8CCE6, #F028FD, #2BDEAC);
+}
+
+.pyramid-loader .wrapper .side4 {
+  transform: rotateX(-30deg);
+  background: conic-gradient( #2BDEAC, #F028FD, #D8CCE6, #2F2585);
+}
+
+.pyramid-loader .wrapper .shadow {
+  width: 60px;
+  height: 60px;
+  background: #8B5AD5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: rotateX(90deg) translateZ(-40px);
+  filter: blur(12px);
+}
   
-  .btn-2 {
-    background: white;
-    background: linear-gradient(0deg, white 0%, white 100%);
-    border: none;
-  }
-  .btn-active{
-    box-shadow: 4px 4px 6px 0 rgba(255,255,255,.5),
-    -4px -4px 6px 0 rgba(116, 125, 136, .5), 
-inset -4px -4px 6px 0 rgba(255,255,255,.2),
-inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
-  }
-  
-  .btn-2:before {
-    height: 0%;
-    width: 2px;
-  }
-  
-  .btn-2:hover {
-    box-shadow: 4px 4px 6px 0 rgba(255,255,255,.5),
-                -4px -4px 6px 0 rgba(116, 125, 136, .5), 
-      inset -4px -4px 6px 0 rgba(255,255,255,.2),
-      inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
-  }
   
   
   
   
-  
-  
-  /* Neomorphic footer  */
-  .neomorphic-footer-container {
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2), -2px -2px 6px rgba(255, 255, 255, 0.5);
-    border-radius: 0.5rem;
-  }
-  .neomorphic-footer-container:hover {
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3), -3px -3px 8px rgba(255, 255, 255, 0.7);
-  }
-  .neomorphic-footer-container.dark-mode {
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), -2px -2px 6px rgba(255, 255, 255, 0.1);
-  }
-  .neomorphic-footer-container.dark-mode:hover {
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8), -3px -3px 8px rgba(255, 255, 255, 0.3);
-  }
   
   
   

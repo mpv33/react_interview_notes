@@ -19,13 +19,14 @@ root.render(
 document.addEventListener('mousemove', function (e) {
   let body = document.querySelector('body');
   let circle = document.createElement('span');
+  circle.classList.add('bubble');
   let x = e.offsetX;
   let y = e.offsetY;
   circle.style.left = x + "px";
   circle.style.top = y + "px";
   let size = Math.random() * 100;
-  circle.style.width = 20 + size + "px";
-  circle.style.height = 20 + size + "px";
+  circle.style.width = 10 + size + "px";
+  circle.style.height = 10 + size + "px";
   if (body) {
     body.appendChild(circle);
     setTimeout(function () {
