@@ -16,8 +16,8 @@ SDE-Kit covers a wide range of technologies and topics, including:
 
 ## Live Demos
 
-- [SDE-Kit Live  dev Demo](https://sdekit.netlify.app/)
-- [Latest Production Version](https://interviewpro-notes.vercel.app/)
+- [dev Demo](https://sdekit.netlify.app/)
+- [Production Demo](https://interviewpro-notes.vercel.app/)
 
 ## Getting Started
 
